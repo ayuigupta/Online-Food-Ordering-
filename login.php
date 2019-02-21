@@ -1,3 +1,15 @@
+
+<?php 
+session_start();
+error_reporting(0);
+
+include('db.php');
+if(isset($_SESSION["username"]))  
+ {  
+      header("location:home.php");  
+ }  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,33 +48,44 @@
 				</span>
 			<div class="wrap-login100 p-t-30 p-b-50">
 				
-				<form class="login100-form validate-form p-b-33 p-t-5">
+				<form action='verify.php' method="POST" class="login100-form validate-form p-b-33 p-t-5">
 
 					<h4 style="padding-top: 10px; color: dimgray;"><center>CUSTOMER LOGIN</center></h4>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter ID">
 						
-						<input class="input100" type="email" name="username" placeholder="Email-id" id="emails" >
+						<input class="input100" type="text" name="username" placeholder="Username" id="username" >
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password"  onmousedown="this.type='text'" onmouseup="this.type='password'" onmousemove="this.type='password'" id="password">
+						<input class="input100" type="password" name="password" placeholder="Password"  onmousedown="this.type='text'" onmouseup="this.type='password'" onmousemove="this.type='password'" id="password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 
 						<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-											<button class="login100-form-btn" onclick="login(event);">
+											<button class="login100-form-btn" name="submit" type="submit">
 								Login
 							</button>
 						</div>
 					</div>
 
-
+						
+							<div>
+							<center>
+							
+							<button name="admin" type="submit" style="border-radius: 2px; padding: 10px 24px; margin-top: 2em; background-color: pink;">
+								<a href="restaurant.php" style="color: black;">Admin</a>
+							</button>
+					
+						    </center>
+						</div>
 
 				</form>
+
+
 			</div>
 		</div>
 	</div>
@@ -86,7 +109,5 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
-
 </body>
 </html>
